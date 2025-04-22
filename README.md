@@ -1,3 +1,6 @@
+######### amber_implicit_solvent_sample ############
+
+
 prepare 
 tleap -f xleap.implicit.betacomb4.water.in
 
