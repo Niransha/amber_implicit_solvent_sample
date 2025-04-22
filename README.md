@@ -1,0 +1,16 @@
+prepare 
+tleap -f xleap.implicit.betacomb4.water.in
+
+run 
+perl create_correct_prmtop.pl 
+
+check files
+ambpdb -c prmtop.new -c inpcrd > check.pdb
+
+run minimization
+./runmin.implicit.new_prmtop
+
+run production
+
+submit.athena-rnagpus-shortqs.gpu.sh
+
