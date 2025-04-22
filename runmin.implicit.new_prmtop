@@ -1,0 +1,39 @@
+#!/bin/bash
+#SBATCH -J igb_mbondi3
+#SBATCH -N 1
+#SBATCH -n 2
+##SBATCH --exclusive
+#SBATCH --gres=gpu
+##SBATCH -p shortq7-gpu
+#SBATCH -p longq7-rna
+##SBATCH -p mediumq7,longq7,longq7-rna 
+##SBATCH --exclude=nodeamd[039-041],nodegpu[002-003]
+#SBATCH --mail-type=NONE
+##SBATCH -t infinite
+
+source /mnt/rna/home/programs/amber22/amber.sh
+
+
+#set sander = "$AMBERHOME/bin/pmemd.cuda"
+#set sander = "$AMBERHOME/bin/sander"
+
+/bin/rm -f min
+
+cat > min <<EOF
+Minimization of RNA with positional restraints – First Step
+&cntrl
+  imin=1, maxcyc=50000, ncyc=25000, cut= 999.0,
+  igb=8, saltcon=0.3, ig=-1,
+  ntxo=2, ioutfm=1,
+  nmropt=0, ioutfm=1,
+/
+EOF
+
+pmemd.cuda -O -i min -p prmtop.new -c inpcrd -o min1.out -r min1.rst -ref inpcrd  < /dev/null || goto error 
+
+pmemd.cuda -O -i min -p prmtop.new -c min1.rst -o min2.out -r min2.rst -ref inpcrd  < /dev/null || goto error 
+
+
+#$sander -O -i md.in -p prmtop.new -c min.rst -o md.out  -r md.rst  -ref min.rst < /dev/null || goto error
+
+

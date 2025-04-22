@@ -1,0 +1,86 @@
+source oldff/leaprc.rna.ff99
+source leaprc.water.tip3p
+#source leaprc.water.opc3
+addAtomTypes {
+  { "5A" "C" "sp3" }
+  { "5G" "C" "sp3" }
+  { "5Q" "C" "sp3" }
+  { "5U" "C" "sp3" }
+  { "AA" "C" "sp3" }
+  { "AC" "C" "sp3" }
+  { "AG" "C" "sp3" }
+  { "AU" "C" "sp3" }
+  { "GA" "C" "sp3" }
+  { "GC" "C" "sp3" }
+  { "GG" "C" "sp3" }
+  { "GU" "C" "sp3" }
+  { "QA" "C" "sp3" }
+  { "QC" "C" "sp3" }
+  { "QG" "C" "sp3" }
+  { "QU" "C" "sp3" }
+  { "UA" "C" "sp3" }
+  { "UC" "C" "sp3" }
+  { "UG" "C" "sp3" }
+  { "UU" "C" "sp3" }
+  { "A3" "O" "sp3" }
+  { "aa" "O" "sp3" }
+  { "ac" "O" "sp3" }
+  { "ag" "O" "sp3" }
+  { "au" "O" "sp3" }
+  { "G3" "O" "sp3" }
+  { "ga" "O" "sp3" }
+  { "gc" "O" "sp3" }
+  { "gg" "O" "sp3" }
+  { "gu" "O" "sp3" }
+  { "Q3" "O" "sp3" }
+  { "qa" "O" "sp3" }
+  { "qc" "O" "sp3" }
+  { "qg" "O" "sp3" }
+  { "qu" "O" "sp3" }
+  { "U3" "O" "sp3" }
+  { "ua" "O" "sp3" }
+  { "uc" "O" "sp3" }
+  { "ug" "O" "sp3" }
+  { "uu" "O" "sp3" }
+  { "C1"  "C" "sp2" }
+  { "C2"  "C" "sp2" }
+  { "C3"  "C" "sp2" }
+  { "C4"  "C" "sp2" }
+}
+addPdbAtomMap {
+  { "H5'" "H5'1" } { "H5''" "H5'2" }
+  { "OP1" "O1P" }  { "OP2" "O2P" }
+  { "H2'" "H2'1" } { "HO2'" "HO'2" }
+  { "HO5'" "H5T" } { "HO3'" "H3T" }
+}
+
+set default pbradii mbondi3
+
+loadoff		/media/nkumarachchi2019/EXT1_MALATYA/prep_1D_combine_analyze_prep_systems_for_sims/simulations_prep_files/OPCnTIP3_and_Beta_curve_testing/scripts_simulation_related/lib_dev_1D_comb/RNA_dimeric_residues_dev.lib 
+loadamberparams /media/nkumarachchi2019/EXT1_MALATYA/prep_1D_combine_analyze_prep_systems_for_sims/simulations_prep_files/OPCnTIP3_and_Beta_curve_testing/scripts_simulation_related/lib_dev_1D_comb/frcmod_dev 
+loadamberparams /media/nkumarachchi2019/EXT1_MALATYA/prep_1D_combine_analyze_prep_systems_for_sims/simulations_prep_files/OPCnTIP3_and_Beta_curve_testing/scripts_simulation_related/lib_dev_1D_comb/frcmod_Betacomb4  
+loadamberparams /media/nkumarachchi2019/EXT1_MALATYA/prep_1D_combine_analyze_prep_systems_for_sims/simulations_prep_files/OPCnTIP3_and_Beta_curve_testing/scripts_simulation_related/lib_dev_1D_comb/frcmod_alfa_1Dcomb 
+loadamberparams /media/nkumarachchi2019/EXT1_MALATYA/prep_1D_combine_analyze_prep_systems_for_sims/simulations_prep_files/OPCnTIP3_and_Beta_curve_testing/scripts_simulation_related/lib_dev_1D_comb/frcmod_gamma_1Dcomb  
+loadamberparams /media/nkumarachchi2019/EXT1_MALATYA/prep_1D_combine_analyze_prep_systems_for_sims/simulations_prep_files/OPCnTIP3_and_Beta_curve_testing/scripts_simulation_related/lib_dev_1D_comb/frcmod_epsi_1Dcomb  
+loadamberparams /media/nkumarachchi2019/EXT1_MALATYA/prep_1D_combine_analyze_prep_systems_for_sims/simulations_prep_files/OPCnTIP3_and_Beta_curve_testing/scripts_simulation_related/lib_dev_1D_comb/frcmod_zeta_1Dcomb  
+
+# # loadamberparams /media/nkumarachchi2019/EXT1_MALATYA/ivan_Nir_PDBS_haipins/lib_dev_1D_comb/frcmod_beta_1Dcomb 
+
+model = loadpdb ./cug9.new.pdb     
+
+#model = loadpdb ./resname.new.pdb     
+#addions model Na+ 0
+#solvateoct model TIP3PBOX 12.0
+#solvateoct model OPC3BOX 12.0
+
+saveAmberParm model prmtop inpcrd
+
+quit
+
+
+
+
+
+
+
+

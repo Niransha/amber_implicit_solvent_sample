@@ -1,0 +1,7 @@
+Minimization of RNA with positional restraints – First Step
+&cntrl
+  imin=1, maxcyc=50000, ncyc=25000, cut= 999.0,
+  igb=8, saltcon=0.3, ig=-1,
+  ntxo=2, ioutfm=1,
+  nmropt=0, ioutfm=1,
+/
